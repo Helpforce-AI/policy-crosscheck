@@ -1,0 +1,112 @@
+{
+ "policy": "helpforce_go2_v1.onnx",
+ "seeds": 3,
+ "results": {
+  "mujoco": {
+   "walk 0.5 m/s": [
+    {
+     "seed": 0,
+     "fell": null,
+     "dist": 2.63,
+     "height": 0.295,
+     "clear_min_mm": 182.3,
+     "clear_median_mm": 192.9
+    },
+    {
+     "seed": 1,
+     "fell": null,
+     "dist": 2.68,
+     "height": 0.295,
+     "clear_min_mm": 187.2,
+     "clear_median_mm": 193.2
+    },
+    {
+     "seed": 2,
+     "fell": null,
+     "dist": 2.65,
+     "height": 0.295,
+     "clear_min_mm": 188.4,
+     "clear_median_mm": 193.0
+    }
+   ],
+   "walk 1.0 m/s": [
+    {
+     "seed": 0,
+     "fell": null,
+     "dist": 5.49,
+     "height": 0.304,
+     "clear_min_mm": 186.3,
+     "clear_median_mm": 195.2
+    },
+    {
+     "seed": 1,
+     "fell": null,
+     "dist": 5.51,
+     "height": 0.304,
+     "clear_min_mm": 188.3,
+     "clear_median_mm": 195.0
+    },
+    {
+     "seed": 2,
+     "fell": null,
+     "dist": 5.5,
+     "height": 0.304,
+     "clear_min_mm": 188.2,
+     "clear_median_mm": 196.2
+    }
+   ],
+   "6 kg payload at 0.8 m/s": [
+    {
+     "seed": 0,
+     "fell": null,
+     "dist": 3.97,
+     "height": 0.264,
+     "clear_min_mm": 129.1,
+     "clear_median_mm": 150.3
+    },
+    {
+     "seed": 1,
+     "fell": null,
+     "dist": 4.01,
+     "height": 0.264,
+     "clear_min_mm": 142.0,
+     "clear_median_mm": 150.4
+    },
+    {
+     "seed": 2,
+     "fell": null,
+     "dist": 4.01,
+     "height": 0.264,
+     "clear_min_mm": 109.1,
+     "clear_median_mm": 150.3
+    }
+   ],
+   "friction 0.25 at 0.8 m/s": [
+    {
+     "seed": 0,
+     "fell": null,
+     "dist": 4.6,
+     "height": 0.285,
+     "clear_min_mm": 166.2,
+     "clear_median_mm": 173.4
+    },
+    {
+     "seed": 1,
+     "fell": null,
+     "dist": 4.81,
+     "height": 0.285,
+     "clear_min_mm": 167.4,
+     "clear_median_mm": 173.2
+    },
+    {
+     "seed": 2,
+     "fell": null,
+     "dist": 4.72,
+     "height": 0.285,
+     "clear_min_mm": 165.3,
+     "clear_median_mm": 173.2
+    }
+   ]
+  }
+ }
+}

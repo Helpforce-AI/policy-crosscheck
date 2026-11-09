@@ -1,0 +1,88 @@
+{
+ "policy": "helpforce_go2_v1.onnx",
+ "seeds": 3,
+ "results": {
+  "genesis": {
+   "walk 0.5 m/s": [
+    {
+     "seed": 0,
+     "fell": null,
+     "dist": 2.72,
+     "height": 0.3
+    },
+    {
+     "seed": 1,
+     "fell": null,
+     "dist": 2.81,
+     "height": 0.3
+    },
+    {
+     "seed": 2,
+     "fell": null,
+     "dist": 2.77,
+     "height": 0.3
+    }
+   ],
+   "walk 1.0 m/s": [
+    {
+     "seed": 0,
+     "fell": null,
+     "dist": 5.7,
+     "height": 0.305
+    },
+    {
+     "seed": 1,
+     "fell": null,
+     "dist": 5.74,
+     "height": 0.305
+    },
+    {
+     "seed": 2,
+     "fell": null,
+     "dist": 5.71,
+     "height": 0.305
+    }
+   ],
+   "6 kg payload at 0.8 m/s": [
+    {
+     "seed": 0,
+     "fell": null,
+     "dist": 4.24,
+     "height": 0.266
+    },
+    {
+     "seed": 1,
+     "fell": null,
+     "dist": 4.4,
+     "height": 0.266
+    },
+    {
+     "seed": 2,
+     "fell": null,
+     "dist": 4.34,
+     "height": 0.267
+    }
+   ],
+   "friction 0.25 at 0.8 m/s": [
+    {
+     "seed": 0,
+     "fell": null,
+     "dist": 4.7,
+     "height": 0.297
+    },
+    {
+     "seed": 1,
+     "fell": null,
+     "dist": 4.89,
+     "height": 0.297
+    },
+    {
+     "seed": 2,
+     "fell": null,
+     "dist": 4.79,
+     "height": 0.297
+    }
+   ]
+  }
+ }
+}
