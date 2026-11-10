@@ -5,10 +5,13 @@
   python certify.py policies/your_policy.onnx --results run.json    # score an existing 10-seed run instead
 
 The protocol: https://www.helpforce.ai/validated/protocol
-  4 tests x 10 seeds x 2 engines (MuJoCo and Genesis) = 80 trials of 6 s each.
-  C1  No falls in any trial, in either engine.
-  C2  Every trial covers at least 70% of the commanded distance.
-  C3  In MuJoCo, median body clearance is at least 50 mm in every test, and no trial dips below 20 mm.
+  Core: 4 tests x 10 seeds x 2 engines (MuJoCo and Genesis) = 80 trials of 6 s each. All must pass.
+    C1  No falls in any core trial, in either engine.
+    C2  Every core trial covers at least 70% of the commanded distance.
+    C3  In MuJoCo, median body clearance is at least 50 mm in every core test, and no trial dips below 20 mm.
+  Stress (added in v1.1): pushes, 10 kg payload, 20 ms latency, sensor noise. Another 80 trials.
+    S   A stress test passes when at most 1 of 10 trials falls in each engine. Stress results are graded
+        and published on the certificate; they do not block it.
 
 This script tells you whether a policy meets the protocol. A Helpforce Validated certificate is
 issued only by Helpforce AI after it reruns the check itself; see the protocol page.
@@ -17,9 +20,13 @@ This is simulation evidence. It is not a safety certification and does not repla
 import os, sys, json, hashlib, argparse, subprocess, platform, datetime
 import numpy as np
 
-PROTOCOL, VERSION = 'HV-LOCO-1', '1.0'
+PROTOCOL, VERSION = 'HV-LOCO-1', '1.1'
+STRESS_MAX_FALLS = 1
 SEEDS, MIN_PROGRESS, MIN_MEDIAN_MM, MIN_ANY_MM = 10, 0.70, 50.0, 20.0
 HERE = os.path.dirname(os.path.abspath(__file__))
+
+
+def STRESS_NAMES(stress): return sorted({x['test'] for x in stress})
 
 
 def sha256(path):
@@ -41,12 +48,19 @@ def versions():
 
 
 def score(results):
-    from crosscheck import TESTS, T
-    speed = {name: vx for name, vx, _, _ in TESTS}
-    tests, fails = [], []
+    from crosscheck import TESTS, STRESS, T
+    speed = {t[0]: t[1] for t in TESTS + STRESS}
+    core = {t[0] for t in TESTS}; stress_names = [t[0] for t in STRESS]
+    tests, fails, stress = [], [], []
     for engine in ('mujoco', 'genesis'):
         if engine not in results: fails.append(f'{engine}: not run'); continue
+        for name in stress_names:
+            rs = results[engine].get(name)
+            if rs is None: stress.append(dict(engine=engine, test=name, trials=0, falls=None, passed=None)); continue
+            f = sum(r['fell'] is not None for r in rs)
+            stress.append(dict(engine=engine, test=name, trials=len(rs), falls=f, passed=f <= STRESS_MAX_FALLS))
         for name, rs in results[engine].items():
+            if name not in core: continue
             if len(rs) < SEEDS: fails.append(f'{engine} / {name}: {len(rs)} seeds, protocol needs {SEEDS}')
             falls = sum(r['fell'] is not None for r in rs)
             progress = max(0.0, min(r['dist'] / (speed[name] * T) for r in rs))
@@ -62,7 +76,7 @@ def score(results):
                     if low < MIN_ANY_MM: fails.append(f'C3 {name}: clearance dipped to {low:.1f} mm, needs {MIN_ANY_MM:.0f}')
                 else: fails.append(f'C3 {name}: no trial walked the full run, clearance not measurable')
             tests.append(row)
-    return tests, fails
+    return tests, fails, stress
 
 
 if __name__ == '__main__':
@@ -78,18 +92,23 @@ if __name__ == '__main__':
         import onnxruntime as ort
         from crosscheck import run_mujoco, run_genesis
         pol = ort.InferenceSession(a.policy)
-        results = dict(mujoco=run_mujoco(pol, SEEDS), genesis=run_genesis(pol, SEEDS))
-    tests, fails = score(results)
+        from crosscheck import TESTS, STRESS
+        results = dict(mujoco=run_mujoco(pol, SEEDS, TESTS + STRESS), genesis=run_genesis(pol, SEEDS, TESTS + STRESS))
+    tests, fails, stress = score(results)
     report = dict(protocol=PROTOCOL, protocol_version=VERSION, checked=datetime.date.today().isoformat(),
                   policy_file=os.path.basename(a.policy), policy_sha256=sha256(a.policy),
-                  verdict='meets protocol' if not fails else 'does not meet protocol',
-                  failures=fails, tests=tests, environment=versions(), results=results)
+                  verdict='meets core protocol' if not fails else 'does not meet core protocol',
+                  failures=fails, tests=tests, stress=stress,
+                  stress_passed=sum(1 for n in {x['test'] for x in stress} if all(x['passed'] for x in stress if x['test'] == n)),
+                  environment=versions(), results=results)
     print(f'\n{PROTOCOL} v{VERSION}   {report["policy_file"]}')
     print(f'SHA-256  {report["policy_sha256"]}\n')
     for t in tests:
         clr = f"   clearance median {t['clearance_median_mm']} mm, min {t['clearance_min_mm']} mm" if 'clearance_median_mm' in t else ''
         print(f"  {t['engine']:8s} {t['test']:26s} falls {t['falls']}/{t['trials']}   min progress {t['min_progress']:.0%}{clr}")
-    print(f'\nVerdict: {report["verdict"].upper()}')
+    print(f'\nCore verdict: {report["verdict"].upper()}')
+    print(f'\nStress tests (pass = at most {STRESS_MAX_FALLS} fall in 10, per engine): {report["stress_passed"]} of {len(STRESS_NAMES(stress))} passed')
+    for x in stress: print(f"  {x['engine']:8s} {x['test']:26s} falls {x['falls']}/{x['trials']}   {'pass' if x['passed'] else 'FAIL' if x['passed'] is not None else 'not run'}")
     for f in fails[:12]: print('  - ' + f)
     if len(fails) > 12: print(f'  ... and {len(fails) - 12} more')
     if a.out: json.dump(report, open(a.out, 'w'), indent=1); print(f'\nReport written to {a.out}')

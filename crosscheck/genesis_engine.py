@@ -58,4 +58,7 @@ class GSim:
         c = self.robot.get_contacts(with_entity=self.plane)
         la, lb = np.asarray(c['link_a']).reshape(-1), np.asarray(c['link_b']).reshape(-1)
         return bool(np.any(la == self.base_idx) or np.any(lb == self.base_idx))
+    def kick(self, dvx, dvy):
+        v = np.asarray(self.robot.get_dofs_velocity()).reshape(-1).copy(); v[0] += dvx; v[1] += dvy
+        self.robot.set_dofs_velocity(v)
     def base(self): return np.asarray(self.robot.get_pos()).reshape(-1)[:3]

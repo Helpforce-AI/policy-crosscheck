@@ -53,17 +53,32 @@ If your observation layout, gains or timing differ, change the constants at the 
 
 ## Check against the Helpforce Validated protocol
 
-`certify.py` scores a policy against [protocol HV-LOCO-1 v1.0](https://www.helpforce.ai/validated/protocol): 4 tests, 10 seeds, both engines (80 trials), and three pass criteria.
+`certify.py` scores a policy against [protocol HV-LOCO-1 v1.1](https://www.helpforce.ai/validated/protocol), in two tiers.
+
+**Core** (must pass): 4 tests x 10 seeds x 2 engines, 80 trials.
 
 - **C1** no falls in any trial
 - **C2** every trial covers at least 70% of the commanded distance
 - **C3** in MuJoCo, median body clearance at least 50 mm in every test, and no trial below 20 mm
 
+**Stress** (graded, added in v1.1): sideways pushes of 1.0 m/s, a 10 kg payload, 20 ms action latency and Isaac Lab's default sensor noise. Another 80 trials. A stress test passes when no more than 1 of 10 trials falls in each engine.
+
 ```bash
-python certify.py policies/helpforce_go2_v1.onnx --out report.json   # about 3 minutes on a CPU
+python certify.py policies/helpforce_go2_v1.onnx --out report.json   # about 6 minutes on a CPU
+python crosscheck.py policies/your_policy.onnx --engine both --stress  # the raw table
 ```
 
-It prints the verdict and the policy file's SHA-256. Helpforce Go2 v1 meets the protocol: 0 falls in 80 trials, median clearance 150 to 196 mm ([certificate HV-2026-0001](https://www.helpforce.ai/validated/HV-2026-0001)). The standard-reward policy does not: 63 of 80 trials fell. Both 10-seed runs are in `results/`.
+Results for the two included policies (falls out of 10, MuJoCo / Genesis):
+
+| Test | Standard reward | Helpforce Go2 v1 |
+|---|---|---|
+| Core, all four tests | 36 / 27 of 40 | 0 / 0 of 40 |
+| Push 1.0 m/s | 10 / 7 | 6 / 3 |
+| 10 kg payload | 10 / 10 | 10 / 6 |
+| 20 ms latency | 4 / 2 | 0 / 0 |
+| Sensor noise | 9 / 1 | 0 / 0 |
+
+Helpforce Go2 v1 meets the core protocol and passes 2 of 4 stress tests ([certificate HV-2026-0001](https://www.helpforce.ai/validated/HV-2026-0001)). It is weak against strong pushes and heavy loads, and we publish that. The standard-reward policy fails the core and all four stress tests. All runs are in `results/`.
 
 The script tells you whether a file meets the protocol. Certificates are issued only by Helpforce AI after rerunning the check; see [Helpforce Validated](https://www.helpforce.ai/validated). This is simulation evidence, not a safety certification.
 
@@ -77,7 +92,7 @@ The script tells you whether a file meets the protocol. Certificates are issued 
 
 ```
 crosscheck.py               the four tests, both engines, results table and JSON
-certify.py                  scores a policy against protocol HV-LOCO-1 (80 trials, pass criteria, file hash)
+certify.py                  scores a policy against protocol HV-LOCO-1 v1.1 (core + stress tiers, file hash)
 crosscheck/mujoco_engine.py MuJoCo control loop matched to Isaac Lab
 crosscheck/genesis_engine.py Genesis control loop, same constants and fall rule
 policies/                   the two Go2 policies above (ONNX)
