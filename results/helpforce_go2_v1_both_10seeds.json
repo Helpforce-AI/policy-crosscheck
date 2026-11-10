@@ -1,0 +1,586 @@
+{
+ "policy": "helpforce_go2_v1.onnx",
+ "seeds": 10,
+ "results": {
+  "mujoco": {
+   "walk 0.5 m/s": [
+    {
+     "seed": 0,
+     "fell": null,
+     "dist": 2.63,
+     "height": 0.295,
+     "clear_min_mm": 182.3,
+     "clear_median_mm": 192.9
+    },
+    {
+     "seed": 1,
+     "fell": null,
+     "dist": 2.68,
+     "height": 0.295,
+     "clear_min_mm": 187.2,
+     "clear_median_mm": 193.2
+    },
+    {
+     "seed": 2,
+     "fell": null,
+     "dist": 2.65,
+     "height": 0.295,
+     "clear_min_mm": 188.4,
+     "clear_median_mm": 193.0
+    },
+    {
+     "seed": 3,
+     "fell": null,
+     "dist": 2.67,
+     "height": 0.295,
+     "clear_min_mm": 184.1,
+     "clear_median_mm": 193.1
+    },
+    {
+     "seed": 4,
+     "fell": null,
+     "dist": 2.64,
+     "height": 0.295,
+     "clear_min_mm": 187.8,
+     "clear_median_mm": 193.1
+    },
+    {
+     "seed": 5,
+     "fell": null,
+     "dist": 2.69,
+     "height": 0.295,
+     "clear_min_mm": 188.1,
+     "clear_median_mm": 193.2
+    },
+    {
+     "seed": 6,
+     "fell": null,
+     "dist": 2.65,
+     "height": 0.295,
+     "clear_min_mm": 187.1,
+     "clear_median_mm": 193.1
+    },
+    {
+     "seed": 7,
+     "fell": null,
+     "dist": 2.7,
+     "height": 0.295,
+     "clear_min_mm": 188.3,
+     "clear_median_mm": 193.2
+    },
+    {
+     "seed": 8,
+     "fell": null,
+     "dist": 2.65,
+     "height": 0.295,
+     "clear_min_mm": 184.4,
+     "clear_median_mm": 193.0
+    },
+    {
+     "seed": 9,
+     "fell": null,
+     "dist": 2.69,
+     "height": 0.295,
+     "clear_min_mm": 186.8,
+     "clear_median_mm": 193.1
+    }
+   ],
+   "walk 1.0 m/s": [
+    {
+     "seed": 0,
+     "fell": null,
+     "dist": 5.49,
+     "height": 0.304,
+     "clear_min_mm": 186.3,
+     "clear_median_mm": 195.2
+    },
+    {
+     "seed": 1,
+     "fell": null,
+     "dist": 5.51,
+     "height": 0.304,
+     "clear_min_mm": 188.3,
+     "clear_median_mm": 195.0
+    },
+    {
+     "seed": 2,
+     "fell": null,
+     "dist": 5.5,
+     "height": 0.304,
+     "clear_min_mm": 188.2,
+     "clear_median_mm": 196.2
+    },
+    {
+     "seed": 3,
+     "fell": null,
+     "dist": 5.51,
+     "height": 0.304,
+     "clear_min_mm": 188.8,
+     "clear_median_mm": 196.3
+    },
+    {
+     "seed": 4,
+     "fell": null,
+     "dist": 5.48,
+     "height": 0.304,
+     "clear_min_mm": 187.0,
+     "clear_median_mm": 196.3
+    },
+    {
+     "seed": 5,
+     "fell": null,
+     "dist": 5.5,
+     "height": 0.305,
+     "clear_min_mm": 188.6,
+     "clear_median_mm": 196.2
+    },
+    {
+     "seed": 6,
+     "fell": null,
+     "dist": 5.5,
+     "height": 0.304,
+     "clear_min_mm": 187.2,
+     "clear_median_mm": 195.6
+    },
+    {
+     "seed": 7,
+     "fell": null,
+     "dist": 5.51,
+     "height": 0.305,
+     "clear_min_mm": 188.7,
+     "clear_median_mm": 195.9
+    },
+    {
+     "seed": 8,
+     "fell": null,
+     "dist": 5.51,
+     "height": 0.304,
+     "clear_min_mm": 187.4,
+     "clear_median_mm": 196.2
+    },
+    {
+     "seed": 9,
+     "fell": null,
+     "dist": 5.5,
+     "height": 0.305,
+     "clear_min_mm": 188.6,
+     "clear_median_mm": 196.0
+    }
+   ],
+   "6 kg payload at 0.8 m/s": [
+    {
+     "seed": 0,
+     "fell": null,
+     "dist": 3.97,
+     "height": 0.264,
+     "clear_min_mm": 129.1,
+     "clear_median_mm": 150.3
+    },
+    {
+     "seed": 1,
+     "fell": null,
+     "dist": 4.01,
+     "height": 0.264,
+     "clear_min_mm": 142.0,
+     "clear_median_mm": 150.4
+    },
+    {
+     "seed": 2,
+     "fell": null,
+     "dist": 4.01,
+     "height": 0.264,
+     "clear_min_mm": 109.1,
+     "clear_median_mm": 150.3
+    },
+    {
+     "seed": 3,
+     "fell": null,
+     "dist": 4.02,
+     "height": 0.264,
+     "clear_min_mm": 122.6,
+     "clear_median_mm": 150.4
+    },
+    {
+     "seed": 4,
+     "fell": null,
+     "dist": 3.95,
+     "height": 0.264,
+     "clear_min_mm": 141.4,
+     "clear_median_mm": 150.2
+    },
+    {
+     "seed": 5,
+     "fell": null,
+     "dist": 4.02,
+     "height": 0.264,
+     "clear_min_mm": 143.2,
+     "clear_median_mm": 150.4
+    },
+    {
+     "seed": 6,
+     "fell": null,
+     "dist": 3.96,
+     "height": 0.264,
+     "clear_min_mm": 142.2,
+     "clear_median_mm": 150.3
+    },
+    {
+     "seed": 7,
+     "fell": null,
+     "dist": 4.03,
+     "height": 0.264,
+     "clear_min_mm": 142.2,
+     "clear_median_mm": 150.3
+    },
+    {
+     "seed": 8,
+     "fell": null,
+     "dist": 3.96,
+     "height": 0.264,
+     "clear_min_mm": 136.4,
+     "clear_median_mm": 150.3
+    },
+    {
+     "seed": 9,
+     "fell": null,
+     "dist": 4.01,
+     "height": 0.264,
+     "clear_min_mm": 140.9,
+     "clear_median_mm": 150.4
+    }
+   ],
+   "friction 0.25 at 0.8 m/s": [
+    {
+     "seed": 0,
+     "fell": null,
+     "dist": 4.6,
+     "height": 0.285,
+     "clear_min_mm": 166.2,
+     "clear_median_mm": 173.4
+    },
+    {
+     "seed": 1,
+     "fell": null,
+     "dist": 4.81,
+     "height": 0.285,
+     "clear_min_mm": 167.4,
+     "clear_median_mm": 173.2
+    },
+    {
+     "seed": 2,
+     "fell": null,
+     "dist": 4.72,
+     "height": 0.285,
+     "clear_min_mm": 165.3,
+     "clear_median_mm": 173.2
+    },
+    {
+     "seed": 3,
+     "fell": null,
+     "dist": 4.78,
+     "height": 0.285,
+     "clear_min_mm": 165.5,
+     "clear_median_mm": 173.2
+    },
+    {
+     "seed": 4,
+     "fell": null,
+     "dist": 4.66,
+     "height": 0.285,
+     "clear_min_mm": 167.8,
+     "clear_median_mm": 173.2
+    },
+    {
+     "seed": 5,
+     "fell": null,
+     "dist": 4.79,
+     "height": 0.285,
+     "clear_min_mm": 167.6,
+     "clear_median_mm": 173.3
+    },
+    {
+     "seed": 6,
+     "fell": null,
+     "dist": 4.68,
+     "height": 0.285,
+     "clear_min_mm": 164.2,
+     "clear_median_mm": 173.2
+    },
+    {
+     "seed": 7,
+     "fell": null,
+     "dist": 4.81,
+     "height": 0.285,
+     "clear_min_mm": 167.8,
+     "clear_median_mm": 173.3
+    },
+    {
+     "seed": 8,
+     "fell": null,
+     "dist": 4.73,
+     "height": 0.285,
+     "clear_min_mm": 166.3,
+     "clear_median_mm": 173.2
+    },
+    {
+     "seed": 9,
+     "fell": null,
+     "dist": 4.81,
+     "height": 0.285,
+     "clear_min_mm": 167.7,
+     "clear_median_mm": 173.3
+    }
+   ]
+  },
+  "genesis": {
+   "walk 0.5 m/s": [
+    {
+     "seed": 0,
+     "fell": null,
+     "dist": 2.72,
+     "height": 0.3
+    },
+    {
+     "seed": 1,
+     "fell": null,
+     "dist": 2.81,
+     "height": 0.3
+    },
+    {
+     "seed": 2,
+     "fell": null,
+     "dist": 2.77,
+     "height": 0.3
+    },
+    {
+     "seed": 3,
+     "fell": null,
+     "dist": 2.78,
+     "height": 0.3
+    },
+    {
+     "seed": 4,
+     "fell": null,
+     "dist": 2.75,
+     "height": 0.3
+    },
+    {
+     "seed": 5,
+     "fell": null,
+     "dist": 2.8,
+     "height": 0.299
+    },
+    {
+     "seed": 6,
+     "fell": null,
+     "dist": 2.75,
+     "height": 0.3
+    },
+    {
+     "seed": 7,
+     "fell": null,
+     "dist": 2.81,
+     "height": 0.3
+    },
+    {
+     "seed": 8,
+     "fell": null,
+     "dist": 2.75,
+     "height": 0.3
+    },
+    {
+     "seed": 9,
+     "fell": null,
+     "dist": 2.81,
+     "height": 0.299
+    }
+   ],
+   "walk 1.0 m/s": [
+    {
+     "seed": 0,
+     "fell": null,
+     "dist": 5.7,
+     "height": 0.305
+    },
+    {
+     "seed": 1,
+     "fell": null,
+     "dist": 5.74,
+     "height": 0.305
+    },
+    {
+     "seed": 2,
+     "fell": null,
+     "dist": 5.71,
+     "height": 0.305
+    },
+    {
+     "seed": 3,
+     "fell": null,
+     "dist": 5.73,
+     "height": 0.306
+    },
+    {
+     "seed": 4,
+     "fell": null,
+     "dist": 5.7,
+     "height": 0.305
+    },
+    {
+     "seed": 5,
+     "fell": null,
+     "dist": 5.73,
+     "height": 0.305
+    },
+    {
+     "seed": 6,
+     "fell": null,
+     "dist": 5.71,
+     "height": 0.306
+    },
+    {
+     "seed": 7,
+     "fell": null,
+     "dist": 5.74,
+     "height": 0.305
+    },
+    {
+     "seed": 8,
+     "fell": null,
+     "dist": 5.72,
+     "height": 0.305
+    },
+    {
+     "seed": 9,
+     "fell": null,
+     "dist": 5.73,
+     "height": 0.305
+    }
+   ],
+   "6 kg payload at 0.8 m/s": [
+    {
+     "seed": 0,
+     "fell": null,
+     "dist": 4.24,
+     "height": 0.266
+    },
+    {
+     "seed": 1,
+     "fell": null,
+     "dist": 4.4,
+     "height": 0.266
+    },
+    {
+     "seed": 2,
+     "fell": null,
+     "dist": 4.34,
+     "height": 0.267
+    },
+    {
+     "seed": 3,
+     "fell": null,
+     "dist": 4.39,
+     "height": 0.266
+    },
+    {
+     "seed": 4,
+     "fell": null,
+     "dist": 4.34,
+     "height": 0.265
+    },
+    {
+     "seed": 5,
+     "fell": null,
+     "dist": 4.42,
+     "height": 0.265
+    },
+    {
+     "seed": 6,
+     "fell": null,
+     "dist": 4.33,
+     "height": 0.266
+    },
+    {
+     "seed": 7,
+     "fell": null,
+     "dist": 4.43,
+     "height": 0.266
+    },
+    {
+     "seed": 8,
+     "fell": null,
+     "dist": 4.35,
+     "height": 0.266
+    },
+    {
+     "seed": 9,
+     "fell": null,
+     "dist": 4.4,
+     "height": 0.266
+    }
+   ],
+   "friction 0.25 at 0.8 m/s": [
+    {
+     "seed": 0,
+     "fell": null,
+     "dist": 4.7,
+     "height": 0.297
+    },
+    {
+     "seed": 1,
+     "fell": null,
+     "dist": 4.89,
+     "height": 0.297
+    },
+    {
+     "seed": 2,
+     "fell": null,
+     "dist": 4.79,
+     "height": 0.297
+    },
+    {
+     "seed": 3,
+     "fell": null,
+     "dist": 4.84,
+     "height": 0.297
+    },
+    {
+     "seed": 4,
+     "fell": null,
+     "dist": 4.65,
+     "height": 0.297
+    },
+    {
+     "seed": 5,
+     "fell": null,
+     "dist": 4.8,
+     "height": 0.297
+    },
+    {
+     "seed": 6,
+     "fell": null,
+     "dist": 4.69,
+     "height": 0.297
+    },
+    {
+     "seed": 7,
+     "fell": null,
+     "dist": 4.87,
+     "height": 0.297
+    },
+    {
+     "seed": 8,
+     "fell": null,
+     "dist": 4.74,
+     "height": 0.297
+    },
+    {
+     "seed": 9,
+     "fell": null,
+     "dist": 4.88,
+     "height": 0.298
+    }
+   ]
+  }
+ }
+}

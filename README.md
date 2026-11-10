@@ -51,6 +51,22 @@ Any Go2 policy exported from Isaac Lab's flat velocity task should work as it is
 
 If your observation layout, gains or timing differ, change the constants at the top of `crosscheck/mujoco_engine.py`. Most transfer bugs are interface mismatches, not physics.
 
+## Check against the Helpforce Validated protocol
+
+`certify.py` scores a policy against [protocol HV-LOCO-1 v1.0](https://www.helpforce.ai/validated/protocol): 4 tests, 10 seeds, both engines (80 trials), and three pass criteria.
+
+- **C1** no falls in any trial
+- **C2** every trial covers at least 70% of the commanded distance
+- **C3** in MuJoCo, median body clearance at least 50 mm in every test, and no trial below 20 mm
+
+```bash
+python certify.py policies/helpforce_go2_v1.onnx --out report.json   # about 3 minutes on a CPU
+```
+
+It prints the verdict and the policy file's SHA-256. Helpforce Go2 v1 meets the protocol: 0 falls in 80 trials, median clearance 150 to 196 mm ([certificate HV-2026-0001](https://www.helpforce.ai/validated/HV-2026-0001)). The standard-reward policy does not: 63 of 80 trials fell. Both 10-seed runs are in `results/`.
+
+The script tells you whether a file meets the protocol. Certificates are issued only by Helpforce AI after rerunning the check; see [Helpforce Validated](https://www.helpforce.ai/validated). This is simulation evidence, not a safety certification.
+
 ## How a trial works
 
 - Each trial is a 6 s walk at a commanded forward speed, from a seeded start (joint offsets of up to 0.1 rad and a small base velocity). Seed `k` gives the same start in both engines.
@@ -61,6 +77,7 @@ If your observation layout, gains or timing differ, change the constants at the 
 
 ```
 crosscheck.py               the four tests, both engines, results table and JSON
+certify.py                  scores a policy against protocol HV-LOCO-1 (80 trials, pass criteria, file hash)
 crosscheck/mujoco_engine.py MuJoCo control loop matched to Isaac Lab
 crosscheck/genesis_engine.py Genesis control loop, same constants and fall rule
 policies/                   the two Go2 policies above (ONNX)

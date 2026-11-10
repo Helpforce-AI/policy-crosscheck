@@ -1,0 +1,586 @@
+{
+ "policy": "standard_reward.onnx",
+ "seeds": 10,
+ "results": {
+  "mujoco": {
+   "walk 0.5 m/s": [
+    {
+     "seed": 0,
+     "fell": 0.68,
+     "dist": 0.18,
+     "height": 0.247,
+     "clear_min_mm": 0.1,
+     "clear_median_mm": 132.8
+    },
+    {
+     "seed": 1,
+     "fell": 0.7,
+     "dist": 0.22,
+     "height": 0.247,
+     "clear_min_mm": -4.3,
+     "clear_median_mm": 147.7
+    },
+    {
+     "seed": 2,
+     "fell": 0.7,
+     "dist": 0.19,
+     "height": 0.24,
+     "clear_min_mm": -1.7,
+     "clear_median_mm": 129.7
+    },
+    {
+     "seed": 3,
+     "fell": 0.72,
+     "dist": 0.22,
+     "height": 0.24,
+     "clear_min_mm": 0.4,
+     "clear_median_mm": 133.3
+    },
+    {
+     "seed": 4,
+     "fell": 0.74,
+     "dist": 0.18,
+     "height": 0.238,
+     "clear_min_mm": 0.8,
+     "clear_median_mm": 129.2
+    },
+    {
+     "seed": 5,
+     "fell": 0.72,
+     "dist": 0.23,
+     "height": 0.241,
+     "clear_min_mm": -0.2,
+     "clear_median_mm": 133.5
+    },
+    {
+     "seed": 6,
+     "fell": 0.68,
+     "dist": 0.17,
+     "height": 0.245,
+     "clear_min_mm": -3.6,
+     "clear_median_mm": 135.9
+    },
+    {
+     "seed": 7,
+     "fell": 0.7,
+     "dist": 0.23,
+     "height": 0.243,
+     "clear_min_mm": -1.2,
+     "clear_median_mm": 133.8
+    },
+    {
+     "seed": 8,
+     "fell": 0.74,
+     "dist": 0.21,
+     "height": 0.236,
+     "clear_min_mm": -0.7,
+     "clear_median_mm": 130.7
+    },
+    {
+     "seed": 9,
+     "fell": 0.7,
+     "dist": 0.23,
+     "height": 0.247,
+     "clear_min_mm": -5.3,
+     "clear_median_mm": 141.3
+    }
+   ],
+   "walk 1.0 m/s": [
+    {
+     "seed": 0,
+     "fell": 0.54,
+     "dist": 0.25,
+     "height": 0.238,
+     "clear_min_mm": 0.9,
+     "clear_median_mm": 110.0
+    },
+    {
+     "seed": 1,
+     "fell": 0.46,
+     "dist": 0.23,
+     "height": 0.261,
+     "clear_min_mm": -0.1,
+     "clear_median_mm": 140.9
+    },
+    {
+     "seed": 2,
+     "fell": null,
+     "dist": 5.25,
+     "height": 0.122,
+     "clear_min_mm": 1.3,
+     "clear_median_mm": 16.9
+    },
+    {
+     "seed": 3,
+     "fell": 0.62,
+     "dist": 0.31,
+     "height": 0.223,
+     "clear_min_mm": -0.7,
+     "clear_median_mm": 104.7
+    },
+    {
+     "seed": 4,
+     "fell": null,
+     "dist": 5.29,
+     "height": 0.121,
+     "clear_min_mm": 1.2,
+     "clear_median_mm": 16.8
+    },
+    {
+     "seed": 5,
+     "fell": 0.6,
+     "dist": 0.28,
+     "height": 0.227,
+     "clear_min_mm": 0.8,
+     "clear_median_mm": 108.6
+    },
+    {
+     "seed": 6,
+     "fell": null,
+     "dist": 5.3,
+     "height": 0.121,
+     "clear_min_mm": 1.8,
+     "clear_median_mm": 16.8
+    },
+    {
+     "seed": 7,
+     "fell": 0.46,
+     "dist": 0.23,
+     "height": 0.255,
+     "clear_min_mm": -0.0,
+     "clear_median_mm": 120.9
+    },
+    {
+     "seed": 8,
+     "fell": null,
+     "dist": 5.33,
+     "height": 0.122,
+     "clear_min_mm": 1.7,
+     "clear_median_mm": 16.8
+    },
+    {
+     "seed": 9,
+     "fell": 0.56,
+     "dist": 0.28,
+     "height": 0.237,
+     "clear_min_mm": 0.4,
+     "clear_median_mm": 121.3
+    }
+   ],
+   "6 kg payload at 0.8 m/s": [
+    {
+     "seed": 0,
+     "fell": 0.46,
+     "dist": 0.15,
+     "height": 0.246,
+     "clear_min_mm": -2.6,
+     "clear_median_mm": 100.0
+    },
+    {
+     "seed": 1,
+     "fell": 0.44,
+     "dist": 0.2,
+     "height": 0.259,
+     "clear_min_mm": 0.1,
+     "clear_median_mm": 132.1
+    },
+    {
+     "seed": 2,
+     "fell": 0.46,
+     "dist": 0.16,
+     "height": 0.245,
+     "clear_min_mm": -2.2,
+     "clear_median_mm": 101.2
+    },
+    {
+     "seed": 3,
+     "fell": 0.46,
+     "dist": 0.2,
+     "height": 0.246,
+     "clear_min_mm": -4.0,
+     "clear_median_mm": 103.3
+    },
+    {
+     "seed": 4,
+     "fell": 0.48,
+     "dist": 0.14,
+     "height": 0.242,
+     "clear_min_mm": 0.4,
+     "clear_median_mm": 96.7
+    },
+    {
+     "seed": 5,
+     "fell": 0.46,
+     "dist": 0.2,
+     "height": 0.246,
+     "clear_min_mm": -3.5,
+     "clear_median_mm": 103.2
+    },
+    {
+     "seed": 6,
+     "fell": 0.46,
+     "dist": 0.14,
+     "height": 0.249,
+     "clear_min_mm": -2.2,
+     "clear_median_mm": 106.5
+    },
+    {
+     "seed": 7,
+     "fell": 0.46,
+     "dist": 0.21,
+     "height": 0.248,
+     "clear_min_mm": 0.2,
+     "clear_median_mm": 106.3
+    },
+    {
+     "seed": 8,
+     "fell": 0.46,
+     "dist": 0.17,
+     "height": 0.244,
+     "clear_min_mm": -1.1,
+     "clear_median_mm": 99.8
+    },
+    {
+     "seed": 9,
+     "fell": 0.46,
+     "dist": 0.21,
+     "height": 0.251,
+     "clear_min_mm": -4.0,
+     "clear_median_mm": 112.6
+    }
+   ],
+   "friction 0.25 at 0.8 m/s": [
+    {
+     "seed": 0,
+     "fell": 0.36,
+     "dist": 0.01,
+     "height": 0.271,
+     "clear_min_mm": -2.2,
+     "clear_median_mm": 152.6
+    },
+    {
+     "seed": 1,
+     "fell": 0.38,
+     "dist": 0.1,
+     "height": 0.272,
+     "clear_min_mm": -9.2,
+     "clear_median_mm": 162.8
+    },
+    {
+     "seed": 2,
+     "fell": 0.36,
+     "dist": 0.03,
+     "height": 0.27,
+     "clear_min_mm": 0.9,
+     "clear_median_mm": 153.6
+    },
+    {
+     "seed": 3,
+     "fell": 0.38,
+     "dist": 0.08,
+     "height": 0.267,
+     "clear_min_mm": -1.2,
+     "clear_median_mm": 143.7
+    },
+    {
+     "seed": 4,
+     "fell": 0.36,
+     "dist": -0.01,
+     "height": 0.269,
+     "clear_min_mm": -6.5,
+     "clear_median_mm": 154.7
+    },
+    {
+     "seed": 5,
+     "fell": 0.38,
+     "dist": 0.08,
+     "height": 0.266,
+     "clear_min_mm": -3.0,
+     "clear_median_mm": 144.6
+    },
+    {
+     "seed": 6,
+     "fell": 0.36,
+     "dist": -0.01,
+     "height": 0.269,
+     "clear_min_mm": -7.4,
+     "clear_median_mm": 156.8
+    },
+    {
+     "seed": 7,
+     "fell": 0.38,
+     "dist": 0.1,
+     "height": 0.268,
+     "clear_min_mm": -6.7,
+     "clear_median_mm": 145.7
+    },
+    {
+     "seed": 8,
+     "fell": 0.38,
+     "dist": 0.04,
+     "height": 0.263,
+     "clear_min_mm": -5.2,
+     "clear_median_mm": 142.2
+    },
+    {
+     "seed": 9,
+     "fell": 0.38,
+     "dist": 0.09,
+     "height": 0.27,
+     "clear_min_mm": -4.5,
+     "clear_median_mm": 149.6
+    }
+   ]
+  },
+  "genesis": {
+   "walk 0.5 m/s": [
+    {
+     "seed": 0,
+     "fell": 0.68,
+     "dist": 0.18,
+     "height": 0.249
+    },
+    {
+     "seed": 1,
+     "fell": 0.72,
+     "dist": 0.23,
+     "height": 0.247
+    },
+    {
+     "seed": 2,
+     "fell": 0.76,
+     "dist": 0.21,
+     "height": 0.236
+    },
+    {
+     "seed": 3,
+     "fell": 0.74,
+     "dist": 0.25,
+     "height": 0.241
+    },
+    {
+     "seed": 4,
+     "fell": 5.26,
+     "dist": 1.77,
+     "height": 0.138
+    },
+    {
+     "seed": 5,
+     "fell": null,
+     "dist": 2.07,
+     "height": 0.142
+    },
+    {
+     "seed": 6,
+     "fell": 5.48,
+     "dist": 1.79,
+     "height": 0.139
+    },
+    {
+     "seed": 7,
+     "fell": 0.74,
+     "dist": 0.24,
+     "height": 0.24
+    },
+    {
+     "seed": 8,
+     "fell": 0.72,
+     "dist": 0.22,
+     "height": 0.239
+    },
+    {
+     "seed": 9,
+     "fell": 0.74,
+     "dist": 0.24,
+     "height": 0.241
+    }
+   ],
+   "walk 1.0 m/s": [
+    {
+     "seed": 0,
+     "fell": null,
+     "dist": 5.22,
+     "height": 0.124
+    },
+    {
+     "seed": 1,
+     "fell": null,
+     "dist": 5.3,
+     "height": 0.124
+    },
+    {
+     "seed": 2,
+     "fell": null,
+     "dist": 5.22,
+     "height": 0.123
+    },
+    {
+     "seed": 3,
+     "fell": null,
+     "dist": 5.4,
+     "height": 0.123
+    },
+    {
+     "seed": 4,
+     "fell": null,
+     "dist": 5.35,
+     "height": 0.125
+    },
+    {
+     "seed": 5,
+     "fell": null,
+     "dist": 5.27,
+     "height": 0.124
+    },
+    {
+     "seed": 6,
+     "fell": 0.58,
+     "dist": 0.23,
+     "height": 0.234
+    },
+    {
+     "seed": 7,
+     "fell": null,
+     "dist": 5.44,
+     "height": 0.124
+    },
+    {
+     "seed": 8,
+     "fell": null,
+     "dist": 5.33,
+     "height": 0.123
+    },
+    {
+     "seed": 9,
+     "fell": null,
+     "dist": 5.4,
+     "height": 0.124
+    }
+   ],
+   "6 kg payload at 0.8 m/s": [
+    {
+     "seed": 0,
+     "fell": 0.58,
+     "dist": 0.15,
+     "height": 0.221
+    },
+    {
+     "seed": 1,
+     "fell": 0.54,
+     "dist": 0.21,
+     "height": 0.237
+    },
+    {
+     "seed": 2,
+     "fell": 0.46,
+     "dist": 0.16,
+     "height": 0.244
+    },
+    {
+     "seed": 3,
+     "fell": 1.12,
+     "dist": 0.46,
+     "height": 0.146
+    },
+    {
+     "seed": 4,
+     "fell": 0.48,
+     "dist": 0.14,
+     "height": 0.241
+    },
+    {
+     "seed": 5,
+     "fell": 0.46,
+     "dist": 0.2,
+     "height": 0.245
+    },
+    {
+     "seed": 6,
+     "fell": 2.34,
+     "dist": 1.16,
+     "height": 0.11
+    },
+    {
+     "seed": 7,
+     "fell": 0.8,
+     "dist": 0.29,
+     "height": 0.194
+    },
+    {
+     "seed": 8,
+     "fell": 0.46,
+     "dist": 0.17,
+     "height": 0.24
+    },
+    {
+     "seed": 9,
+     "fell": 2.02,
+     "dist": 1.0,
+     "height": 0.11
+    }
+   ],
+   "friction 0.25 at 0.8 m/s": [
+    {
+     "seed": 0,
+     "fell": 0.4,
+     "dist": 0.02,
+     "height": 0.259
+    },
+    {
+     "seed": 1,
+     "fell": null,
+     "dist": 4.42,
+     "height": 0.135
+    },
+    {
+     "seed": 2,
+     "fell": 0.4,
+     "dist": 0.05,
+     "height": 0.26
+    },
+    {
+     "seed": 3,
+     "fell": null,
+     "dist": 4.49,
+     "height": 0.134
+    },
+    {
+     "seed": 4,
+     "fell": 0.36,
+     "dist": -0.01,
+     "height": 0.269
+    },
+    {
+     "seed": 5,
+     "fell": 0.4,
+     "dist": 0.09,
+     "height": 0.262
+    },
+    {
+     "seed": 6,
+     "fell": 0.4,
+     "dist": 0.01,
+     "height": 0.261
+    },
+    {
+     "seed": 7,
+     "fell": 0.46,
+     "dist": 0.13,
+     "height": 0.249
+    },
+    {
+     "seed": 8,
+     "fell": null,
+     "dist": 4.5,
+     "height": 0.134
+    },
+    {
+     "seed": 9,
+     "fell": 0.46,
+     "dist": 0.13,
+     "height": 0.251
+    }
+   ]
+  }
+ }
+}
