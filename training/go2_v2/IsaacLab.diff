@@ -1,0 +1,72 @@
+--- git status ---
+HEAD detached at v2.3.2
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   source/isaaclab_tasks/isaaclab_tasks/manager_based/locomotion/velocity/config/go2/flat_env_cfg.py
+	modified:   source/isaaclab_tasks/isaaclab_tasks/manager_based/locomotion/velocity/config/go2/rough_env_cfg.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	2.7.0+cu128
+	hf_patch_v2.py
+	scripts/go2_probe.py
+	scripts/hf_patch.py
+	scripts/hf_patch2.py
+	scripts/hf_patch3.py
+
+no changes added to commit (use "git add" and/or "git commit -a") 
+
+
+--- git diff ---
+diff --git a/source/isaaclab_tasks/isaaclab_tasks/manager_based/locomotion/velocity/config/go2/flat_env_cfg.py b/source/isaaclab_tasks/isaaclab_tasks/manager_based/locomotion/velocity/config/go2/flat_env_cfg.py
+index 8bf8bb137..cc9986e7a 100644
+--- a/source/isaaclab_tasks/isaaclab_tasks/manager_based/locomotion/velocity/config/go2/flat_env_cfg.py
++++ b/source/isaaclab_tasks/isaaclab_tasks/manager_based/locomotion/velocity/config/go2/flat_env_cfg.py
+@@ -13,6 +13,29 @@ class UnitreeGo2FlatEnvCfg(UnitreeGo2RoughEnvCfg):
+     def __post_init__(self):
+         # post init of parent
+         super().__post_init__()
++        import os as _os
++        from isaaclab.managers import RewardTermCfg as _RT
++        import isaaclab.envs.mdp as _mdp
++        _th = float(_os.environ.get("HF_TARGET_HEIGHT", "0"))
++        if _th > 0:
++            self.rewards.base_height = _RT(func=_mdp.base_height_l2, weight=float(_os.environ.get("HF_HEIGHT_W", "-30")), params={"target_height": _th})
++
++        # --- Helpforce v2: pushes and payload (off unless the env vars are set) ---
++        _push = float(_os.environ.get("HF_PUSH", "0"))
++        if _push > 0:
++            from isaaclab.managers import EventTermCfg as _ET
++            self.events.push_robot = _ET(
++                func=_mdp.push_by_setting_velocity, mode="interval", interval_range_s=(4.0, 8.0),
++                params={"velocity_range": {"x": (-_push, _push), "y": (-1.2 * _push, 1.2 * _push)}},
++            )
++        _mmax = float(_os.environ.get("HF_MASS_MAX", "0"))
++        if _mmax > 0:
++            self.events.add_base_mass.params["mass_distribution_params"] = (-1.0, _mmax)
++        print(f"[Helpforce] height={_th} push={_push} mass_max={_mmax}")
++        _pv = float(_os.environ.get("HF_PUSH", "0"))
++        if _pv > 0:
++            from isaaclab.managers import EventTermCfg as _ET
++            self.events.push_robot = _ET(func=_mdp.push_by_setting_velocity, mode="interval", interval_range_s=(5.0, 10.0), params={"velocity_range": {"x": (-_pv, _pv), "y": (-_pv, _pv)}})
+ 
+         # override rewards
+         self.rewards.flat_orientation_l2.weight = -2.5
+diff --git a/source/isaaclab_tasks/isaaclab_tasks/manager_based/locomotion/velocity/config/go2/rough_env_cfg.py b/source/isaaclab_tasks/isaaclab_tasks/manager_based/locomotion/velocity/config/go2/rough_env_cfg.py
+index 69e6adddd..e069810d7 100644
+--- a/source/isaaclab_tasks/isaaclab_tasks/manager_based/locomotion/velocity/config/go2/rough_env_cfg.py
++++ b/source/isaaclab_tasks/isaaclab_tasks/manager_based/locomotion/velocity/config/go2/rough_env_cfg.py
+@@ -18,6 +18,12 @@ class UnitreeGo2RoughEnvCfg(LocomotionVelocityRoughEnvCfg):
+     def __post_init__(self):
+         # post init of parent
+         super().__post_init__()
++        import os as _os
++        _th = float(_os.environ.get("HF_ROUGH_HEIGHT", "0"))
++        if _th > 0:
++            from isaaclab.managers import RewardTermCfg as _RT, SceneEntityCfg as _SE
++            import isaaclab.envs.mdp as _mdp
++            self.rewards.base_height = _RT(func=_mdp.base_height_l2, weight=-10.0, params={"target_height": _th, "sensor_cfg": _SE("height_scanner")})
+ 
+         self.scene.robot = UNITREE_GO2_CFG.replace(prim_path="{ENV_REGEX_NS}/Robot")
+         self.scene.height_scanner.prim_path = "{ENV_REGEX_NS}/Robot/base"
