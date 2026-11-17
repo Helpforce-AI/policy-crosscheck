@@ -6,12 +6,13 @@ Training metrics tell you how well a policy fits the engine it was trained in. T
 
 ## What we found
 
-Two Unitree Go2 walking policies, both trained in Isaac Lab with the standard velocity-tracking task. The second adds one reward term that holds the body near 30 cm.
+Our current policy is **Helpforce Go2 v2**. It started as a fix for one finding: two Unitree Go2 walking policies, both trained in Isaac Lab with the standard velocity-tracking task. The second, Helpforce Go2 v1, adds one reward term that holds the body near 30 cm.
 
 | Policy | Isaac Lab training survival |
 |---|---|
 | Standard reward | 99.8% |
 | Helpforce Go2 v1 | 97.5% |
+| Helpforce Go2 v2 | 98.4% (trained with pushes and payloads on) |
 
 By the training numbers, the first policy looks better. Run unchanged in two other engines (falls out of 3 seeded trials, lower is better):
 
@@ -24,6 +25,8 @@ By the training numbers, the first policy looks better. Run unchanged in two oth
 
 The standard-reward policy learned a deep crouch: at 1.0 m/s it walks with a median of about **17 mm** between its body and the floor. Whether that counts as touching the ground depends on each engine's contact model, so the engines disagree. Helpforce Go2 v1 keeps about **195 mm** and every engine gives it the same verdict.
 
+**Helpforce Go2 v2** is v1 fine-tuned with random pushes and payloads. It keeps the margin: 0 falls in 80 core trials across MuJoCo and Genesis, a median of **212 to 236 mm** under the body, and it passes all four stress tests (results below). It is the policy that runs in the [Helpforce Simulator](https://www.helpforce.ai/simulator) and holds [certificate HV-2026-0002](https://www.helpforce.ai/validated/HV-2026-0002).
+
 **When engines disagree about a policy, the policy is relying on engine-specific physics.** Disagreement is a signal to investigate, not noise to average away.
 
 Full write-up: [methodology and scorecard](https://www.helpforce.ai/simulator/methodology). Try both policies live in your browser: [Helpforce Simulator](https://www.helpforce.ai/simulator).
@@ -34,7 +37,7 @@ Full write-up: [methodology and scorecard](https://www.helpforce.ai/simulator/me
 pip install -r requirements.txt            # MuJoCo and ONNX Runtime
 pip install genesis-world                  # optional, for --engine genesis (CPU is fine)
 
-python crosscheck.py policies/helpforce_go2_v1.onnx
+python crosscheck.py policies/helpforce_go2_v2.onnx
 python crosscheck.py policies/standard_reward.onnx --engine both --out results/mine.json
 ```
 
@@ -64,7 +67,7 @@ If your observation layout, gains or timing differ, change the constants at the 
 **Stress** (graded, added in v1.1): sideways pushes of 1.0 m/s, a 10 kg payload, 20 ms action latency and Isaac Lab's default sensor noise. Another 80 trials. A stress test passes when no more than 1 of 10 trials falls in each engine.
 
 ```bash
-python certify.py policies/helpforce_go2_v1.onnx --out report.json   # about 6 minutes on a CPU
+python certify.py policies/helpforce_go2_v2.onnx --out report.json   # about 6 minutes on a CPU
 python crosscheck.py policies/your_policy.onnx --engine both --stress  # the raw table
 ```
 
@@ -79,7 +82,7 @@ Results for the two included policies (falls out of 10, MuJoCo / Genesis):
 | Sensor noise | 9 / 1 | 0 / 0 | 0 / 0 |
 | Body clearance, MuJoCo median per test | 17 mm at 1.0 m/s | 150 to 196 mm | 212 to 236 mm |
 
-Helpforce Go2 v1 meets the core protocol and passes 2 of 4 stress tests ([certificate HV-2026-0001](https://www.helpforce.ai/validated/HV-2026-0001)). It is weak against strong pushes and heavy loads, and we publish that. The standard-reward policy fails the core and all four stress tests.
+Helpforce Go2 v1, the earlier policy, meets the core protocol and passes 2 of 4 stress tests ([certificate HV-2026-0001](https://www.helpforce.ai/validated/HV-2026-0001)). It is weak against strong pushes and heavy loads, and we publish that. The standard-reward policy fails the core and all four stress tests.
 
 **Helpforce Go2 v2** is v1 fine-tuned for 500 more iterations in Isaac Lab with random pushes (up to 1.0 m/s) and added body mass (-1 to +12 kg) switched on. It meets the core protocol and passes all 4 stress tests in both engines. Read that result with care: v2 was trained on the same kinds of disturbance the stress tier uses, so passing them is expected. What the run shows is that the fix carries over unchanged into MuJoCo and Genesis, and that core walking did not get worse. The exact Isaac Lab training config and code change for v1 and v2 are in `training/`.
 
